@@ -1,0 +1,36 @@
+name: sn-project
+start_script:
+  - python -m pip install --upgrade pip
+  - python --version
+  - git pull
+dependencies:
+  - name: Source Development
+    dir: dependencies
+    status: active
+    clone:
+      branch: dev
+      status: active
+      source: code
+      script:
+        - python setup.py develop --uninstall
+        - python setup.py develop
+      repo:
+        - url: https://github.com/banglafighter/pweb-ui.git
+        - url: https://github.com/banglafighter/pweb-ssr.git
+        - url: https://github.com/banglafighter/pweb-auth.git
+
+  - name: Application
+    dir: application
+    status: active
+    source: code
+    module:
+      status: active
+      script:
+        - python setup.py develop --uninstall
+        - python setup.py develop
+      subdir:
+        - name: boot
+
+end_script:
+  - python setup.py develop --uninstall
+  - python setup.py develop

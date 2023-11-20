@@ -1,0 +1,25 @@
+<!-- ============ Left sidebar ============ -->
+<div class="col-md-3">
+    <div class="l-sidebar user-data">
+        <div class="user-bg">
+            <div class="user-pic">
+                <img src="{{ auth.profile_photo }}" alt="User">
+            </div>
+        </div>
+        <div class="user-details">
+            <div class="fs-h2">{{ auth.name }}</div>
+            <span class="sub-text-span">{{ auth.title }}</span>
+        </div>
+
+        <ul class="user-follow-status">
+            <li>
+                <div class="follow-title">Total Post</div>
+                <span>{{ auth.post_count }}</span>
+            </li>
+            <li>
+                <a href="{{ url_for("member_controller.profile") }}" class="view-profile-button" title="view Profile">View Profile</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- ============ Left sidebar End ============ -->

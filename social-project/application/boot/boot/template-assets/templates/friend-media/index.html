@@ -1,0 +1,38 @@
+{% extends "layout/private-layout.html" %}
+
+{% block private_content %}
+      <main>
+      <div class="container">
+          <div class="row g-3">
+              {% include "friend-media/snippet/left-sidebar.html" %}
+
+                    <!-- ============ Middle Content ============ -->
+                     <div class="col-md-6">
+                        <!-- ============ create post card ============ -->
+                        <div class="card br-card rounded-0">
+                            <div class="card-body">
+                                <div class="d-flex gap-2">
+                                    <img src="{{ auth.profile_photo }}" class="w-10 h-10 rounded-circle">
+                                    <input placeholder="Hi, write somethings here" class="w-100 create-post" data-bs-toggle="modal" data-bs-target="#postModal">
+                                    {% include "friend-media/snippet/post-modal.html" %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============ create post card end ============ -->
+                         <div id="post-panel">
+                             {% for post in table %}
+                                 {% with post=post %}
+                                     {% include "friend-media/post.html" %}
+                                 {% endwith %}
+                             {% endfor %}
+                         </div>
+                    </div>
+                     <!-- ============ Middle Content End ============ -->
+
+              {% include "friend-media/snippet/right-sidebar.html" %}
+
+
+          </div>
+      </div>
+  </main>
+{% endblock %}

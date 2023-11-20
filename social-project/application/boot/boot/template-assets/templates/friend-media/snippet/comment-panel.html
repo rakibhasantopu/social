@@ -1,0 +1,17 @@
+<div id="post-{{- post.id }}-comment-list">
+    {% with comments=post.comment %}
+        {% include "friend-media/snippet/comment.html" %}
+    {% endwith %}
+</div>
+
+<!--   Create Comment Section   -->
+<div class="mt-2">
+    <form action="#" class="create-comment" method="post" data-post="{{- post.id }}">
+        <div class="comment-create">
+            <textarea name="content" placeholder="Add your Comment.." class="cr-body mt-2 comment-content"></textarea>
+            <input name="postId" type="hidden" value="{{- post.id }}">
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary btn-cc">Comment</button>
+    </form>
+</div>
+<!--   Create Comment Section End   -->

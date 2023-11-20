@@ -1,0 +1,9 @@
+<span class="link-counter">
+    <i class="fa-solid fa-heart me-1"></i>Like<span class="ms-1">{{ post.likeCount|default("0", True) }}</span>
+</span>
+<div class="d-flex">
+    <span class="link-counter">
+        <span>{{ post.commentCount|default("0", True)  }}</span>
+        Comment
+    </span>
+</div>

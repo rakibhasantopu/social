@@ -1,0 +1,22 @@
+
+{% if comments %}
+    {% for comment in comments %}
+        <!--   Comment Section   -->
+        <div class="d-grid gap-3 pt-3">
+            <div class="d-flex">
+                <img src="{{ auth.get_profile_photo(comment.member) }}" class="w-10 h-10 rounded-circle">
+                <div>
+                    <div class="comment-body">
+                        <div class="username-sm">
+                            {{ comment.member.name }}
+                        </div>
+                        <p class="mb-0 text-sm">
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--   Comment Section End  -->
+    {% endfor %}
+{% endif %}

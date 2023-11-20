@@ -1,0 +1,27 @@
+{% extends "layout/private-layout.html" %}
+
+
+{% block private_header %}
+    <link href="{{ url_for('boot-static.static', filename='css/profile.css') }}" rel="stylesheet">
+    <link href="{{ url_for('boot-static.static', filename='js/lib/cropper/cropper.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('boot-static.static', filename='js/lib/cropper/cropper.min.js') }}"></script>
+{% endblock %}
+
+{% block private_content %}
+    <main>
+        <div class="container">
+            <div class="row g-3">
+                <div class="container-xxl flex-grow-1 container-p-y mt-3">
+                    {% include "member/snippet/profile-crop-modal.html" %}
+                    {% include "member/snippet/profile-header.html" %}
+                    {% block profile_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block base_js %}
+    <script src="{{ url_for('boot-static.static', filename='js/pweb/pweb.profile.js') }}"></script>
+{% endblock %}
+

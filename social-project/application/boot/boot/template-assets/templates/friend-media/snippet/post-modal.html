@@ -1,0 +1,43 @@
+<!-- Create Post Modal-->
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="Post Create" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title text-center fs-h3" id="exampleModalLabel">Create a Post</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="#" method="post" novalidate class="needs-validation" id="create-post-modal-form">
+                    <div class="d-flex flex-1 align-items-center gap-3">
+                        <img src="{{ auth.profile_photo }}" class="w-10 h-10 rounded-circle">
+                        <div class="d-flex flex-column align-items-start justify-content-center">
+                            <div class="text-h3 fw-bold text-dark">{{ auth.name }}</div>
+                            <select name="visibility" class="form-select-sm post-see" aria-label="Select who can see the post">
+                                <option selected value="Public">Public</option>
+                                <option value="Private">Private</option>
+                                <option value="Friends">Friends</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <textarea name="content" class="form-control post-text-area" rows="5" placeholder="Type somethings here" required></textarea>
+                    </div>
+
+                    <div class="d-flex border rounded-1 p-2 shadow-sm align-items-center">
+                        <div class="sub-text-span fs-6 ps-1">Add to your Post</div>
+                        <div class="d-flex flex-1 align-items-center justify-content-end ">
+                            <a href="#" class="post-icon bg-tag">
+                                <i class="fa-regular fa-image"></i>
+                                <input name="image" type="file" class="upload-file">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 mt-2">
+                        <button class="btn btn-primary" type="submit">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Create Post Modal End-->

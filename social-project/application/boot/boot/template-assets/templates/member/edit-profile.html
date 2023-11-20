@@ -1,0 +1,36 @@
+{% extends "layout/profile-layout.html" %}
+
+{% block profile_content %}
+    <div class="row g-0">
+        <div class="col-lg-12 pe-lg-2">
+            <div class="card rounded-0 br-card mb-3">
+                <div class="card-header">
+                    <div class="mb-0  ">Edit Profile</div>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" noValidate method="post" action="{{ url_for("member_controller.edit_profile") }}">
+                        <div class="row">
+                            {% form_input field=form.name, wrapper="mb-3 col-md-6" %}
+                            {% if auth_base == "USERNAME" %}
+                                {% form_input field=form.username, wrapper="mb-3 col-md-6" %}
+                            {% else %}
+                                {% form_input field=form.email, wrapper="mb-3 col-md-6" %}
+                            {% endif %}
+                            {% form_input field=form.title, wrapper="mb-3 col-md-12" %}
+                            {% form_input field=form.sex, wrapper="mb-3 col-md-6" %}
+                            {% form_input field=form.dob, wrapper="mb-3 col-md-6" %}
+
+                            <div class="col-12">
+                                <span class="float-end">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <a href="{{ url_for("member_controller.profile") }}"
+                                       class="btn btn-danger ms-2" type="button">Cancel</a>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

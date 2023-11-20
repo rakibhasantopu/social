@@ -1,0 +1,54 @@
+<div class="d-grid gap-3 mt-3">
+
+    <!-- ============ Post Without Image ============ -->
+    <div class="card br-card rounded-0">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center pb-2">
+                <div class="d-flex flex-1 align-items-center gap-3">
+                    <img src="{{ auth.get_profile_photo(post.member) }}" class="w-10 h-10 rounded-circle">
+                    <div class="d-flex flex-column align-items-start justify-content-center">
+                        <div class="text-h3 fw-bold text-dark">{{ post.member.name }}</div>
+                        <div class="fw-bold sub-text-span">
+                            <span class="me-2">{{ post.visibility }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="post-body">
+                <p>
+                    {{ post.content }}
+                </p>
+                {% if post.image %}
+                    <div class="post-img">
+                        <img src="/assets/post/{{ post.image }}" alt="post image" class="img-fluid">
+                    </div>
+                {% endif %}
+            </div>
+
+            <!--like comment counter-->
+            <div class="pt-2 d-flex justify-content-between align-items-center" id="like-comment-count-{{- post.id }}">
+                {% include "friend-media/snippet/like-comment-count.html" %}
+            </div>
+            <!--like comment counter end-->
+
+            <!--like comment section-->
+            <div class="border-top border-bottom py-1 mt-2">
+                <div class="row g-2">
+                    <a href="#" class="reaction-btn link-transparent text-center col-6 like-click" data-post="{{- post.id }}">
+                        <i class="fa-solid fa-heart me-1"></i>
+                        Like
+                    </a>
+                    <a href="#" class="reaction-btn link-transparent text-center col-6">
+                        <i class="fa-regular fa-message me-1"></i>
+                        Comment
+                    </a>
+                </div>
+
+            </div>
+            <!--like comment section End-->
+            {% include "friend-media/snippet/comment-panel.html" %}
+        </div>
+    </div>
+    <!-- ============ Post Without Image ============ -->
+
+</div>

@@ -1,0 +1,102 @@
+{% extends "layout/base.html" %}
+
+
+{% block header %}
+    <link href="{{ url_for('boot-static.static', filename='css/header.css') }}" rel="stylesheet">
+    <link href="{{ url_for('boot-static.static', filename='css/home.css') }}" rel="stylesheet">
+    {% block private_header%}{% endblock %}
+{% endblock %}
+
+{% block base_js %}
+    <script src="{{ url_for('boot-static.static', filename='js/pweb/pweb.sn.js') }}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    <!-- ============ Header ============ -->
+    <header>
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <!-- ============ Branding ============ -->
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="/" title="Bangla Fighter">
+                            <img src="{{ url_for('boot-static.static', filename='img/logo.png') }}" alt="logo">
+                        </a>
+                    </div>
+
+{#                    <div class="header-search">#}
+{#                        <i class="fa-solid fa-magnifying-glass search-icon"></i>#}
+{#                        <input type="text" class="form-control" placeholder="Search for Friends , Videos and more.."#}
+{#                               autocomplete="off" aria-expanded="false">#}
+{#                    </div>#}
+                </div>
+                <!-- ============ Branding End============ -->
+
+
+                <!-- ============ Right Menu ============ -->
+                <ul class="nav col-lg-auto my-2 justify-content-end my-md-0 nav-white">
+                    <li class="menu-center">
+                        <a href="/" class="nav-link menu-icon" title="Home">
+                            <i class="fa-solid fa-house"></i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                        <a class="nav-link hide-arrow" data-bs-toggle="dropdown">
+                            <div class="avatar">
+                                <img src="{{ auth.profile_photo }}" alt="profile pic" class="w-px-40 h-auto rounded-circle border"/>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end profile-dropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="avatar">
+                                                <img src="{{ auth.profile_photo }}" alt="profile pic" class="h-auto rounded-circle border"/>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1 operator">
+                                            <span class="fw-semi-bold d-block">{{ auth.name }}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item drop-link" href="{{ url_for("member_controller.profile") }}">
+                                            <span class="p-menu-icon">
+                                                 <i class="fa-solid fa-heart"></i>
+                                            </span>
+                                    <span class="align-middle">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item drop-link" href="{{ url_for("auth_controller.logout") }}">
+                                            <span class="p-menu-icon">
+                                                <i class="fa-solid fa-right-from-bracket"></i>
+                                            </span>
+                                    <span class="align-middle">Log Out</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- ============ Right Menu End============ -->
+            </div>
+        </div>
+    </header>
+    <!-- ============ Header End ============ -->
+
+    {% block private_content %}
+    {% endblock %}
+
+{% endblock %}
+

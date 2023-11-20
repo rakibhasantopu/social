@@ -1,0 +1,67 @@
+{% extends "layout/profile-layout.html" %}
+
+{% block profile_content %}
+    <div class="row g-0">
+        <div class="col-lg-8 pe-lg-2">
+            <div class="card rounded-0 br-card mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="mb-0">Profile</div>
+                    <a href="{{ url_for("member_controller.edit_profile") }}" class="cursor-pointer">
+                        Edit
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="row form-details gy-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold h-auto min-h-details">{{ member.name }}</div>
+                                <label class="details-label-fs">Name</label>
+                            </div>
+                        </div>
+
+                        {% if auth_base == "EMAIL" %}
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <div class="form-control fw-bold h-auto min-h-details">{{ member.email }}</div>
+                                    <label class="details-label-fs">Email</label>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <div class="form-control fw-bold h-auto min-h-details">{{ member.username }}</div>
+                                    <label class="details-label-fs">Username</label>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold h-auto min-h-details">
+                                    {{ member.title }}
+                                </div>
+                                <label class="details-label-fs">I am</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold h-auto min-h-details">
+                                    {{ member.sex }}
+                                </div>
+                                <label class="details-label-fs">Sex</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold h-auto min-h-details">{{ member.dob }}</div>
+                                <label class="details-label-fs">Date of Birth</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "member/snippet/change-password.html" %}
+    </div>
+{% endblock %}
